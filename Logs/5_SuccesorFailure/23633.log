@@ -1,0 +1,20 @@
+2014-11-11 22:28:19,818 INFO Log File for Master 
+2014-11-11 22:28:19,818 INFO  For key JP process Id ('ubuntu', 11808) Alive count 0
+2014-11-11 22:28:19,819 INFO  For key JP process Id ('ubuntu', 13842) Alive count 0
+2014-11-11 22:28:19,819 INFO  For key JP process Id ('ubuntu', 36932) Alive count 0
+2014-11-11 22:28:19,819 INFO  For key JP process Id ('ubuntu', 25252) Alive count 0
+2014-11-11 22:28:19,819 INFO  For key JP process Id ('ubuntu', 13958) Alive count 0
+2014-11-11 22:28:24,853 INFO Checking For Alive Count
+2014-11-11 22:28:29,854 INFO Checking For Alive Count
+2014-11-11 22:28:29,855 INFO   ## Found Dead ##: For key JP process Id ('ubuntu', 36932) Alive count 0
+2014-11-11 22:28:29,855 INFO Middle Down for key JP
+2014-11-11 22:28:29,905 INFO Previous List [<Server('ubuntu', 11808)>, <Server('ubuntu', 13842)>, <Server('ubuntu', 36932)>, <Server('ubuntu', 25252)>, <Server('ubuntu', 13958)>]
+2014-11-11 22:28:29,906 INFO New List [<Server('ubuntu', 11808)>, <Server('ubuntu', 13842)>, <Server('ubuntu', 25252)>, <Server('ubuntu', 13958)>]
+2014-11-11 22:28:34,908 INFO Checking For Alive Count
+2014-11-11 22:28:34,909 INFO   ## Found Dead ##: For key JP process Id ('ubuntu', 25252) Alive count 0
+2014-11-11 22:28:34,909 INFO Middle Down for key JP
+2014-11-11 22:28:34,951 INFO Previous List [<Server('ubuntu', 11808)>, <Server('ubuntu', 13842)>, <Server('ubuntu', 25252)>, <Server('ubuntu', 13958)>]
+2014-11-11 22:28:34,952 INFO New List [<Server('ubuntu', 11808)>, <Server('ubuntu', 13842)>, <Server('ubuntu', 13958)>]
+2014-11-11 22:28:39,955 INFO Checking For Alive Count
+2014-11-11 22:28:44,974 INFO Checking For Alive Count
+2014-11-11 22:28:49,999 INFO Checking For Alive Count

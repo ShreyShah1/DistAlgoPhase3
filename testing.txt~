@@ -1,0 +1,188 @@
+testing.txt: 
+---------------
+This file contains the detailed descriptions of the test scenarios that were developed to test our Chain Replication code. Each test case in this file is organized in the following manner, and are separated using horizontal dashed lines. The config files, log files and directory 
+
+--------------------------------------------------------------------------------------------
+[TEST-CASE number] : Number of the test case and its title
+[DESCRIPTION]: a brief description of the test case
+[DIRECTORY] : Directory which contains the files for the test case
+[CONFIG FILE]: the configuration file which should be given as input for running this test case
+[HOW TO] : How to run Chain Replication program to get this test case done
+--------------------------------------------------------------------------------------------
+
+We have listed in the below table the directory for all the test cases. Each directory contains the configuration file and the generated log files for that test case.
+----------------------------------------------------
+Test Case # |   Directory Name
+----------------------------------------------------
+1       |       1_HeadFailure
+2       |	2_TailFailure
+3	|	3_MiddlleServer
+4	|	4_PredeccesorFailure
+5	|	5_SuccesorFailure
+6	| 	6_Extension
+7	|	7_ExtensionFailure
+8       |       8_GracefulExtension
+9       |       9_Synthetic
+----------------------------------------------------
+
+
+***************************************************************************************************
+START OF TEST CASES 
+***************************************************************************************************
+[TEST CASE 1]
+HeadFailure
+
+[DESCRIPTION]
+We fail the head in this test case
+
+[DIRECTORY]
+1_HeadFailure
+
+[CONFIG FILE]
+1_HeadFailure.xml
+
+[HOW TO]
+sudo python3 -m da start.da 1_HeadFailure.xml 
+
+---------------------------------------------------------------------------------------------------
+
+[TEST CASE 2]
+Tail Failrue
+
+[DESCRIPTION]
+We fail the tail here
+
+[DIRECTORY]
+2_TailFailure
+
+[CONFIG FILE]
+2_TailFailure.xml
+
+[HOW TO]
+
+sudo python3 -m da start.da TailFailure.xml
+
+
+---------------------------------------------------------------------------------------------------
+
+[TEST CASE 3]
+MiddleServer Failure
+
+[DESCRIPTION]
+Here we fail the middle server here.
+
+[DIRECTORY]
+3_MiddleServer
+
+[CONFIG FILE]
+3_MiddleServer.xml
+
+[HOW TO]
+
+sudo python3 -m da start.da MiddleServer.xml
+---------------------------------------------------------------------------------------------------
+
+[TEST CASE 4]
+Predeccesor Failure
+
+[DESCRIPTION]
+Here we do failure upon failure using failing the predeccesor of  the middle server.
+
+[DIRECTORY]
+4_PredeccesorFailure
+
+[CONFIG FILE]
+4_PredeccesorFailure.xml
+
+[HOW TO]
+sudo python3 -m da start.da 4_PredeccesorFailure.xml
+
+---------------------------------------------------------------------------------------------------
+
+[TEST CASE 5]
+Succesor Failure
+
+[DESCRIPTION]
+Here we do failure upon failure using failing the Succesor of  the middle server.
+ 
+
+[DIRECTORY]
+5_SuccesorFailure
+
+[CONFIG FILE]
+5_SuccesorFailure.xml
+
+
+[HOW TO]
+sudo python3 -m da start.da 5_SuccesorFailure.xml
+---------------------------------------------------------------------------------------------------
+
+[TEST CASE 6]
+6_Extension
+
+[DESCRIPTION]
+Here we show normal extension of chain
+
+[DIRECTORY]
+6_Extension
+
+[CONFIG FILE]
+6_Extension.xml
+
+[HOW TO]
+Extension
+
+sudo python3 -m da start.da 6_Extension.xml
+---------------------------------------------------------------------------------------------------
+
+[TEST CASE 7]
+Extension Failure
+
+[DESCRIPTION]
+Here we fail the current tail
+
+[DIRECTORY]
+7_ExtensionFailure
+
+[CONFIG FILE]
+7_ExtensionFailure.xml
+
+[HOW TO] 
+sudo python3 -m da start.da RetransmitRequests.xml
+
+[TEST CASE 8]
+GracefulFailure
+
+[DESCRIPTION]
+Here we fail the server which is currently being extended.
+
+[DIRECTORY]
+8_GracefulFailure
+
+[CONFIG FILE]
+8_GracefulFailure.xml
+
+[HOW TO] 
+sudo python3 -m da start.da GracefulFailure.xml
+
+[TEST CASE 9]
+9_Synthetic
+
+[DESCRIPTION]
+Here we simulate synthetic loss of messages.
+
+[DIRECTORY]
+9_Synthetic
+
+[CONFIG FILE]
+9_Synthetic.xml
+
+[HOW TO] 
+sudo python3 -m da start.da Synthetic.xml
+
+
+
+
+ 
+
+

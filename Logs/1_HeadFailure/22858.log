@@ -1,0 +1,19 @@
+2014-11-11 21:55:35,562 INFO Log File for Server for bank JPWith Id ('ubuntu', 21321) Lifetime 100 Failure 0
+2014-11-11 21:55:35,563 INFO Middle Server
+2014-11-11 21:55:35,591 INFO Account was not there.. So initializing 
+2014-11-11 21:55:35,593 INFO Current Request  JP.1.1
+2014-11-11 21:55:35,594 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 21:55:35,638 INFO  Sent list after the deleting      {}
+2014-11-11 21:55:45,651 INFO  ### This is the New Head  ### 
+2014-11-11 21:55:55,658 INFO Current Request  JP.1.2
+2014-11-11 21:55:55,660 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 21:55:55,700 INFO  Request removed from all sents JP.1.2
+2014-11-11 21:55:55,706 INFO  Sent list after the deleting      {}
+2014-11-11 21:56:05,696 INFO Current Request  JP.1.3
+2014-11-11 21:56:05,699 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 21:56:05,743 INFO  Request removed from all sents JP.1.3
+2014-11-11 21:56:05,747 INFO  Sent list after the deleting      {}
+2014-11-11 21:56:15,725 INFO Current Request  JP.1.4
+2014-11-11 21:56:15,728 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 21:56:15,767 INFO  Request removed from all sents JP.1.4
+2014-11-11 21:56:15,767 INFO  Sent list after the deleting      {}

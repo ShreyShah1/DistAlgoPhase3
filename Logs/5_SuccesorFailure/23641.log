@@ -1,0 +1,21 @@
+2014-11-11 22:28:19,823 INFO Log File for Server for bank JPWith Id ('ubuntu', 11808) Lifetime 100 Failure 0
+2014-11-11 22:28:19,824 INFO Head Server
+2014-11-11 22:28:19,868 INFO Account was not there.. So initializing 
+2014-11-11 22:28:19,868 INFO Current Request  JP.1.1
+2014-11-11 22:28:19,868 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:28:19,911 INFO Current Request  JP.1.2
+2014-11-11 22:28:19,911 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:28:29,922 INFO Current Request  JP.1.2
+2014-11-11 22:28:29,922 INFO Request Already there JP.1.2 So sending the previous reply 
+2014-11-11 22:28:34,969 INFO  Request removed from all sents JP.1.2
+2014-11-11 22:28:34,971 INFO  Sent list after the deleting      {'JP.1.1': {'RequestObject': <datatypes.Request object at 0xb641658c>, 'Client': <Client('ubuntu', 24918)>}}
+2014-11-11 22:28:34,979 INFO  Request removed from all sents JP.1.1
+2014-11-11 22:28:34,985 INFO  Sent list after the deleting      {}
+2014-11-11 22:28:39,931 INFO Current Request  JP.1.3
+2014-11-11 22:28:39,933 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:28:39,974 INFO  Request removed from all sents JP.1.3
+2014-11-11 22:28:39,982 INFO  Sent list after the deleting      {}
+2014-11-11 22:28:49,961 INFO Current Request  JP.1.4
+2014-11-11 22:28:49,964 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:28:50,012 INFO  Request removed from all sents JP.1.4
+2014-11-11 22:28:50,020 INFO  Sent list after the deleting      {}

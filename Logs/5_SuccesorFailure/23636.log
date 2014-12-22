@@ -1,0 +1,37 @@
+2014-11-11 22:28:19,826 INFO Log File for Server for bank JPWith Id ('ubuntu', 13842) Lifetime 100 Failure 0
+2014-11-11 22:28:19,837 INFO Middle Server
+2014-11-11 22:28:19,870 INFO Account was not there.. So initializing 
+2014-11-11 22:28:19,874 INFO Current Request  JP.1.1
+2014-11-11 22:28:19,874 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:28:19,912 INFO Current Request  JP.1.2
+2014-11-11 22:28:19,914 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:28:29,864 INFO  Got sent array of successor ('ubuntu', 25252)
+2014-11-11 22:28:29,865 INFO  #######################
+2014-11-11 22:28:29,866 INFO Received array {}
+2014-11-11 22:28:29,874 INFO Current Sent Array {'JP.1.2': {'RequestObject': <datatypes.Request object at 0xb6411f6c>, 'Client': <Client('ubuntu', 24918)>}, 'JP.1.1': {'RequestObject': <datatypes.Request object at 0xb64180cc>, 'Client': <Client('ubuntu', 24918)>}}
+2014-11-11 22:28:29,880 INFO  #######################
+2014-11-11 22:28:29,885 INFO  This key not there so adding  key= JP.1.2 value = {'RequestObject': <datatypes.Request object at 0xb6411f6c>, 'Client': <Client('ubuntu', 24918)>}
+2014-11-11 22:28:29,886 INFO  This key not there so adding  key= JP.1.1 value = {'RequestObject': <datatypes.Request object at 0xb64180cc>, 'Client': <Client('ubuntu', 24918)>}
+2014-11-11 22:28:29,894 INFO ** Learnt which elements to send **
+2014-11-11 22:28:29,895 INFO Sending to successor ('ubuntu', 25252)
+2014-11-11 22:28:29,907 INFO   ###  New predeccesor with succesor  ###
+2014-11-11 22:28:29,924 INFO Current Request  JP.1.2
+2014-11-11 22:28:29,924 INFO Request Already there JP.1.2 So sending the previous reply 
+2014-11-11 22:28:34,919 INFO  Got sent array of successor ('ubuntu', 13958)
+2014-11-11 22:28:34,920 INFO  #######################
+2014-11-11 22:28:34,921 INFO Received array {}
+2014-11-11 22:28:34,929 INFO Current Sent Array {'JP.1.2': {'RequestObject': <datatypes.Request object at 0xb6418e4c>, 'Client': <Client('ubuntu', 24918)>}, 'JP.1.1': {'RequestObject': <datatypes.Request object at 0xb64180cc>, 'Client': <Client('ubuntu', 24918)>}}
+2014-11-11 22:28:34,945 INFO  #######################
+2014-11-11 22:28:34,946 INFO  This key not there so adding  key= JP.1.2 value = {'RequestObject': <datatypes.Request object at 0xb6418e4c>, 'Client': <Client('ubuntu', 24918)>}
+2014-11-11 22:28:34,947 INFO  This key not there so adding  key= JP.1.1 value = {'RequestObject': <datatypes.Request object at 0xb64180cc>, 'Client': <Client('ubuntu', 24918)>}
+2014-11-11 22:28:34,950 INFO ** Learnt which elements to send **
+2014-11-11 22:28:34,951 INFO Sending to successor ('ubuntu', 13958)
+2014-11-11 22:28:34,960 INFO   ###  New predeccesor with succesor  ###
+2014-11-11 22:28:34,972 INFO  Sent list after the deleting      {'JP.1.1': {'RequestObject': <datatypes.Request object at 0xb64180cc>, 'Client': <Client('ubuntu', 24918)>}}
+2014-11-11 22:28:34,987 INFO  Sent list after the deleting      {}
+2014-11-11 22:28:39,936 INFO Current Request  JP.1.3
+2014-11-11 22:28:39,946 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:28:39,982 INFO  Sent list after the deleting      {}
+2014-11-11 22:28:49,967 INFO Current Request  JP.1.4
+2014-11-11 22:28:49,968 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:28:50,021 INFO  Sent list after the deleting      {}

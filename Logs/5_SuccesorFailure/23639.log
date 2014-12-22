@@ -1,0 +1,25 @@
+2014-11-11 22:28:19,833 INFO Log File for Server for bank JPWith Id ('ubuntu', 13958) Lifetime 100 Failure 0
+2014-11-11 22:28:19,838 INFO Tail Server
+2014-11-11 22:28:19,887 INFO Account was not there.. So initializing 
+2014-11-11 22:28:19,890 INFO Current Request  JP.1.1
+2014-11-11 22:28:19,890 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:28:19,890 INFO Sending Reply for update operation
+2014-11-11 22:28:19,894 INFO Sending Acknowledgment from tail to predeccesor with object<datatypes.Request object at 0xb6412e4c>
+2014-11-11 22:28:34,914 INFO  ### New succesor with predeccesor ### 
+2014-11-11 22:28:34,915 INFO Sending to Predeccesor the Sent Array  ('ubuntu', 13842)
+2014-11-11 22:28:34,958 INFO  Got Corrected Sent Array  {'JP.1.2': {'RequestObject': <datatypes.Request object at 0xb641baac>, 'Client': <Client('ubuntu', 24918)>}, 'JP.1.1': {'RequestObject': <datatypes.Request object at 0xb641bdcc>, 'Client': <Client('ubuntu', 24918)>}}
+2014-11-11 22:28:34,959 INFO ** Learnt from predeccesor what to proccess and what not to **
+2014-11-11 22:28:34,960 INFO  Not there in transaction Proccesed JP.1.2
+2014-11-11 22:28:34,960 INFO Current Request  JP.1.2
+2014-11-11 22:28:34,961 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:28:34,961 INFO Sending Reply for update operation
+2014-11-11 22:28:34,967 INFO Sending Acknowledgment from tail to predeccesor with object<datatypes.Request object at 0xb641baac>
+2014-11-11 22:28:34,977 INFO  Was there in Trasaction Processed so sending Acknowlegment JP.1.1
+2014-11-11 22:28:39,959 INFO Current Request  JP.1.3
+2014-11-11 22:28:39,962 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:28:39,963 INFO Sending Reply for update operation
+2014-11-11 22:28:39,971 INFO Sending Acknowledgment from tail to predeccesor with object<datatypes.Request object at 0xb6412d2c>
+2014-11-11 22:28:49,971 INFO Current Request  JP.1.4
+2014-11-11 22:28:49,982 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:28:49,998 INFO Sending Reply for update operation
+2014-11-11 22:28:50,009 INFO Sending Acknowledgment from tail to predeccesor with object<datatypes.Request object at 0xb64129cc>

@@ -1,0 +1,20 @@
+2014-11-11 22:35:01,491 INFO Log File for Server for bank JPWith Id ('ubuntu', 32024) Lifetime 1011 Failure 0
+2014-11-11 22:35:01,497 INFO Extending Server
+2014-11-11 22:35:01,500 INFO  In extending server got predeccesor_server = ('ubuntu', 28120)
+2014-11-11 22:35:01,509 INFO ############## This is the new tail  #############
+2014-11-11 22:35:01,516 INFO  Got Previous Tails State
+2014-11-11 22:35:01,516 INFO  Previous Transaction_Proccessed {'JP.1.2': {'amount': 250, 'operation_Type': 1, 'account_no': 1, 'Reply': <datatypes.Reply object at 0xb63d9fec>}, 'JP.1.1': {'amount': 250, 'operation_Type': 1, 'account_no': 1, 'Reply': <datatypes.Reply object at 0xb63de02c>}}
+2014-11-11 22:35:01,516 INFO ############## Setting up the state same as the previous tail  #############
+2014-11-11 22:35:01,517 INFO  New Transaction_Proccessed {'JP.1.2': {'amount': 250, 'operation_Type': 1, 'account_no': 1, 'Reply': <datatypes.Reply object at 0xb63d9fec>}, 'JP.1.1': {'amount': 250, 'operation_Type': 1, 'account_no': 1, 'Reply': <datatypes.Reply object at 0xb63de02c>}}
+2014-11-11 22:35:01,517 INFO  New All Info {1: {'bank_name': 'JP', 'balance': 500}}
+2014-11-11 22:35:01,521 INFO  New Sent {}
+2014-11-11 22:35:01,522 INFO SETTING THE PREDECCESOR ('ubuntu', 28120)
+2014-11-11 22:35:01,522 INFO SENDING TO THE MASTER 
+2014-11-11 22:35:01,551 INFO Current Request  JP.1.3
+2014-11-11 22:35:01,554 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:35:01,554 INFO Sending Reply for update operation
+2014-11-11 22:35:01,556 INFO Sending Acknowledgment from tail to predeccesor with object<datatypes.Request object at 0xb63d9acc>
+2014-11-11 22:35:11,553 INFO Current Request  JP.1.4
+2014-11-11 22:35:11,554 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:35:11,554 INFO Sending Reply for update operation
+2014-11-11 22:35:11,560 INFO Sending Acknowledgment from tail to predeccesor with object<datatypes.Request object at 0xb63d9f8c>

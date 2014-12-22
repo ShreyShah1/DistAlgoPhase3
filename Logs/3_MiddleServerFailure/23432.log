@@ -1,0 +1,31 @@
+2014-11-11 22:14:33,985 INFO Log File for Server for bank JPWith Id ('ubuntu', 23027) Lifetime 100 Failure 0
+2014-11-11 22:14:33,987 INFO Head Server
+2014-11-11 22:14:34,024 INFO Account was not there.. So initializing 
+2014-11-11 22:14:34,024 INFO Current Request  JP.1.1
+2014-11-11 22:14:34,024 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:14:34,071 INFO Current Request  JP.1.2
+2014-11-11 22:14:34,074 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:14:44,174 INFO  Got sent array of successor ('ubuntu', 34971)
+2014-11-11 22:14:44,176 INFO  #######################
+2014-11-11 22:14:44,176 INFO Received array {}
+2014-11-11 22:14:44,176 INFO Current Sent Array {'JP.1.2': {'Client': <Client('ubuntu', 30652)>, 'RequestObject': <datatypes.Request object at 0xb643d66c>}, 'JP.1.1': {'Client': <Client('ubuntu', 30652)>, 'RequestObject': <datatypes.Request object at 0xb643d76c>}}
+2014-11-11 22:14:44,176 INFO  #######################
+2014-11-11 22:14:44,176 INFO  This key not there so adding  key= JP.1.2 value = {'Client': <Client('ubuntu', 30652)>, 'RequestObject': <datatypes.Request object at 0xb643d66c>}
+2014-11-11 22:14:44,177 INFO  This key not there so adding  key= JP.1.1 value = {'Client': <Client('ubuntu', 30652)>, 'RequestObject': <datatypes.Request object at 0xb643d76c>}
+2014-11-11 22:14:44,177 INFO ** Learnt which elements to send **
+2014-11-11 22:14:44,177 INFO Sending to successor ('ubuntu', 34971)
+2014-11-11 22:14:44,178 INFO Current Request  JP.1.2
+2014-11-11 22:14:44,181 INFO Request Already there JP.1.2 So sending the previous reply 
+2014-11-11 22:14:44,187 INFO   ###  New predeccesor with succesor  ###
+2014-11-11 22:14:44,200 INFO  Request removed from all sents JP.1.1
+2014-11-11 22:14:44,200 INFO  Sent list after the deleting      {'JP.1.2': {'Client': <Client('ubuntu', 30652)>, 'RequestObject': <datatypes.Request object at 0xb64465ec>}}
+2014-11-11 22:14:44,201 INFO  Request removed from all sents JP.1.2
+2014-11-11 22:14:44,203 INFO  Sent list after the deleting      {}
+2014-11-11 22:14:54,187 INFO Current Request  JP.1.3
+2014-11-11 22:14:54,189 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:14:54,229 INFO  Request removed from all sents JP.1.3
+2014-11-11 22:14:54,234 INFO  Sent list after the deleting      {}
+2014-11-11 22:15:04,214 INFO Current Request  JP.1.4
+2014-11-11 22:15:04,217 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:15:04,259 INFO  Request removed from all sents JP.1.4
+2014-11-11 22:15:04,266 INFO  Sent list after the deleting      {}

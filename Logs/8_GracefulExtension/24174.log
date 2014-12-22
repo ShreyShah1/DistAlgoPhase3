@@ -1,0 +1,14 @@
+2014-11-11 22:43:14,273 INFO Log File for Server for bank JPWith Id ('ubuntu', 35006) Lifetime 1011 Failure 1
+2014-11-11 22:43:14,281 INFO Extending Server
+2014-11-11 22:43:14,283 INFO  In extending server got predeccesor_server = ('ubuntu', 37049)
+2014-11-11 22:43:14,292 INFO ############## This is the new tail  #############
+2014-11-11 22:43:14,295 INFO  Got Previous Tails State
+2014-11-11 22:43:14,298 INFO  Previous Transaction_Proccessed {'JP.1.3': {'account_no': 1, 'operation_Type': 1, 'amount': 250, 'Reply': <datatypes.Reply object at 0xb641c04c>}, 'JP.1.2': {'account_no': 1, 'operation_Type': 1, 'amount': 250, 'Reply': <datatypes.Reply object at 0xb641c0ac>}, 'JP.1.1': {'account_no': 1, 'operation_Type': 1, 'amount': 250, 'Reply': <datatypes.Reply object at 0xb641c06c>}}
+2014-11-11 22:43:14,302 INFO ############## Setting up the state same as the previous tail  #############
+2014-11-11 22:43:14,302 INFO  New Transaction_Proccessed {'JP.1.3': {'account_no': 1, 'operation_Type': 1, 'amount': 250, 'Reply': <datatypes.Reply object at 0xb641c04c>}, 'JP.1.2': {'account_no': 1, 'operation_Type': 1, 'amount': 250, 'Reply': <datatypes.Reply object at 0xb641c0ac>}, 'JP.1.1': {'account_no': 1, 'operation_Type': 1, 'amount': 250, 'Reply': <datatypes.Reply object at 0xb641c06c>}}
+2014-11-11 22:43:14,302 INFO  New All Info {1: {'balance': 750, 'bank_name': 'JP'}}
+2014-11-11 22:43:14,303 INFO  New Sent {}
+2014-11-11 22:43:14,303 INFO SETTING THE PREDECCESOR ('ubuntu', 37049)
+2014-11-11 22:43:14,307 INFO  Failure Upon Failue  = 1 and setting flag = 1 and exiting
+2014-11-11 22:43:14,307 INFO  ## Message limit might have reached till now  or flag = 1 ## 0
+2014-11-11 22:43:14,307 INFO  EXITING

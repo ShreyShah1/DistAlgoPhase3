@@ -1,0 +1,13 @@
+2014-11-11 22:39:29,078 INFO Log File for Server for bank JPWith Id ('ubuntu', 22259) Lifetime 1011 Failure 0
+2014-11-11 22:39:29,082 INFO Extending Server
+2014-11-11 22:39:29,083 INFO  In extending server got predeccesor_server = ('ubuntu', 19807)
+2014-11-11 22:39:39,043 INFO  Got this is the new tail message
+2014-11-11 22:39:39,054 INFO ############## This is the new tail  #############
+2014-11-11 22:39:39,057 INFO  Got Previous Tails State
+2014-11-11 22:39:39,057 INFO  Previous Transaction_Proccessed {'JP.1.2': {'operation_Type': 1, 'amount': 250, 'Reply': <datatypes.Reply object at 0xb64a33ac>, 'account_no': 1}, 'JP.1.4': {'operation_Type': 1, 'amount': 250, 'Reply': <datatypes.Reply object at 0xb64a342c>, 'account_no': 1}, 'JP.1.3': {'operation_Type': 1, 'amount': 250, 'Reply': <datatypes.Reply object at 0xb64a344c>, 'account_no': 1}, 'JP.1.1': {'operation_Type': 1, 'amount': 250, 'Reply': <datatypes.Reply object at 0xb64a346c>, 'account_no': 1}}
+2014-11-11 22:39:39,058 INFO ############## Setting up the state same as the previous tail  #############
+2014-11-11 22:39:39,058 INFO  New Transaction_Proccessed {'JP.1.2': {'operation_Type': 1, 'amount': 250, 'Reply': <datatypes.Reply object at 0xb64a33ac>, 'account_no': 1}, 'JP.1.4': {'operation_Type': 1, 'amount': 250, 'Reply': <datatypes.Reply object at 0xb64a342c>, 'account_no': 1}, 'JP.1.3': {'operation_Type': 1, 'amount': 250, 'Reply': <datatypes.Reply object at 0xb64a344c>, 'account_no': 1}, 'JP.1.1': {'operation_Type': 1, 'amount': 250, 'Reply': <datatypes.Reply object at 0xb64a346c>, 'account_no': 1}}
+2014-11-11 22:39:39,058 INFO  New All Info {1: {'bank_name': 'JP', 'balance': 1000}}
+2014-11-11 22:39:39,058 INFO  New Sent {'JP.1.4': {'RequestObject': <datatypes.Request object at 0xb64a348c>, 'Client': <Client('ubuntu', 38678)>}}
+2014-11-11 22:39:39,058 INFO SETTING THE PREDECCESOR ('ubuntu', 35390)
+2014-11-11 22:39:39,059 INFO SENDING TO THE MASTER 

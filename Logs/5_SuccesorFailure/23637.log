@@ -1,0 +1,13 @@
+2014-11-11 22:28:19,830 INFO Log File for Server for bank JPWith Id ('ubuntu', 25252) Lifetime 100 Failure 1
+2014-11-11 22:28:19,838 INFO Middle Server
+2014-11-11 22:28:19,884 INFO Account was not there.. So initializing 
+2014-11-11 22:28:19,886 INFO Current Request  JP.1.1
+2014-11-11 22:28:19,886 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:28:19,905 INFO  Sent list after the deleting      {}
+2014-11-11 22:28:29,860 INFO  ### New succesor with predeccesor ### 
+2014-11-11 22:28:29,861 INFO Sending to Predeccesor the Sent Array  ('ubuntu', 13842)
+2014-11-11 22:28:29,898 INFO  Got Corrected Sent Array  {'JP.1.2': {'RequestObject': <datatypes.Request object at 0xb641d4ec>, 'Client': <Client('ubuntu', 24918)>}, 'JP.1.1': {'RequestObject': <datatypes.Request object at 0xb641d62c>, 'Client': <Client('ubuntu', 24918)>}}
+2014-11-11 22:28:29,904 INFO ** Learnt from predeccesor what to proccess and what not to **
+2014-11-11 22:28:29,904 INFO  Failure Flag one going out
+2014-11-11 22:28:29,905 INFO  ## Message limit might have reached till now  or flag = 1 ## 1
+2014-11-11 22:28:29,905 INFO  EXITING

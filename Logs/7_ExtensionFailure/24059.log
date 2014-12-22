@@ -1,0 +1,21 @@
+2014-11-11 22:39:23,962 INFO Log File for Server for bank JPWith Id ('ubuntu', 35390) Lifetime 100 Failure 0
+2014-11-11 22:39:23,963 INFO Middle Server
+2014-11-11 22:39:24,007 INFO Account was not there.. So initializing 
+2014-11-11 22:39:24,010 INFO Current Request  JP.1.1
+2014-11-11 22:39:24,010 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:39:24,033 INFO  Sent list after the deleting      {}
+2014-11-11 22:39:24,059 INFO Current Request  JP.1.2
+2014-11-11 22:39:24,060 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:39:24,077 INFO  Sent list after the deleting      {}
+2014-11-11 22:39:24,090 INFO Current Request  JP.1.3
+2014-11-11 22:39:24,090 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:39:24,114 INFO  Sent list after the deleting      {}
+2014-11-11 22:39:34,091 INFO Current Request  JP.1.4
+2014-11-11 22:39:34,091 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:39:38,996 INFO  ### This is the New Tail ### 
+2014-11-11 22:39:38,997 INFO   ######## Stabilizing the tail by clearing its sent array  ##########
+2014-11-11 22:39:38,997 INFO  Sending response For key JP.1.4
+2014-11-11 22:39:39,045 INFO  Got Give me Your State from = ('ubuntu', 22259)
+2014-11-11 22:39:39,047 INFO  Forwarding the state to = ('ubuntu', 22259)
+2014-11-11 22:39:39,068 INFO Got Extendng Making this as middle server
+2014-11-11 22:39:39,069 INFO  Some problem check it 

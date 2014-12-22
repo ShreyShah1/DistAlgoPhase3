@@ -1,0 +1,7 @@
+2014-11-12 18:38:43,724 INFO Log File for Server for bank JPWith Id ('ubuntu', 39971) Lifetime 100 Failure 0
+2014-11-12 18:38:43,728 INFO Tail Server
+2014-11-12 18:38:53,783 INFO Account was not there.. So initializing 
+2014-11-12 18:38:53,788 INFO Current Request  JP.1.1
+2014-11-12 18:38:53,789 INFO Depositing for accountno = 1 balance = 250
+2014-11-12 18:38:53,789 INFO Sending Reply for update operation
+2014-11-12 18:38:53,798 INFO Sending Acknowledgment from tail to predeccesor with object<datatypes.Request object at 0xb63d884c>

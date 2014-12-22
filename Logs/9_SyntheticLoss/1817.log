@@ -1,0 +1,7 @@
+2014-11-12 18:38:43,709 INFO Log File for client no 1
+2014-11-12 18:38:43,717 INFO Sending Request Packet JP AccountNo = 1 Operation Type = Deposit Amount = 250 SequenceNo = 1
+2014-11-12 18:38:43,719 INFO Sending Update request to head
+2014-11-12 18:38:53,731 WARNING Timeout happened for JP.1.1 so resending the request
+2014-11-12 18:38:53,733 INFO Sending Update request to head
+2014-11-12 18:38:53,793 INFO Finally Sent and Got response
+2014-11-12 18:38:53,797 INFO Received Response  Request = JP.1.1 Account No = 1 Outcome = Processed New_Balance = 250

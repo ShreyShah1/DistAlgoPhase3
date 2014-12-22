@@ -1,0 +1,19 @@
+2014-11-11 22:05:45,295 INFO Log File for Server for bank JPWith Id ('ubuntu', 26266) Lifetime 100 Failure 0
+2014-11-11 22:05:45,296 INFO Middle Server
+2014-11-11 22:05:45,335 INFO Account was not there.. So initializing 
+2014-11-11 22:05:45,336 INFO Current Request  JP.1.1
+2014-11-11 22:05:45,337 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:05:45,365 INFO  Sent list after the deleting      {}
+2014-11-11 22:05:45,386 INFO Current Request  JP.1.2
+2014-11-11 22:05:45,388 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:05:55,318 INFO  ### This is the New Tail ### 
+2014-11-11 22:05:55,319 INFO   ######## Stabilizing the tail by clearing its sent array  ##########
+2014-11-11 22:05:55,320 INFO  Sending response For key JP.1.2
+2014-11-11 22:05:55,387 INFO Current Request  JP.1.3
+2014-11-11 22:05:55,388 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:05:55,388 INFO Sending Reply for update operation
+2014-11-11 22:05:55,389 INFO Sending Acknowledgment from tail to predeccesor with object<datatypes.Request object at 0xb64ab5ac>
+2014-11-11 22:06:05,388 INFO Current Request  JP.1.4
+2014-11-11 22:06:05,398 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:06:05,410 INFO Sending Reply for update operation
+2014-11-11 22:06:05,429 INFO Sending Acknowledgment from tail to predeccesor with object<datatypes.Request object at 0xb64ab4ec>

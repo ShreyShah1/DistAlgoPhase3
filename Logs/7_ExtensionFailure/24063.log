@@ -1,0 +1,19 @@
+2014-11-11 22:39:23,951 INFO Log File for client no 1
+2014-11-11 22:39:23,978 INFO Sending Request Packet JP AccountNo = 1 Operation Type = Deposit Amount = 250 SequenceNo = 1
+2014-11-11 22:39:23,984 INFO Sending Update request to head
+2014-11-11 22:39:24,022 INFO Received Response  Request = JP.1.1 Account No = 1 Outcome = Processed New_Balance = 250Server ('ubuntu', 19807)
+2014-11-11 22:39:24,044 INFO Finally Sent and Got response
+2014-11-11 22:39:24,046 INFO Sending Request Packet JP AccountNo = 1 Operation Type = Deposit Amount = 250 SequenceNo = 2
+2014-11-11 22:39:24,046 INFO Sending Update request to head
+2014-11-11 22:39:24,062 INFO Received Response  Request = JP.1.2 Account No = 1 Outcome = Processed New_Balance = 500Server ('ubuntu', 19807)
+2014-11-11 22:39:24,075 INFO Finally Sent and Got response
+2014-11-11 22:39:24,077 INFO Sending Request Packet JP AccountNo = 1 Operation Type = Deposit Amount = 250 SequenceNo = 3
+2014-11-11 22:39:24,081 INFO Sending Update request to head
+2014-11-11 22:39:24,094 INFO Received Response  Request = JP.1.3 Account No = 1 Outcome = Processed New_Balance = 750Server ('ubuntu', 19807)
+2014-11-11 22:39:34,085 INFO Finally Sent and Got response
+2014-11-11 22:39:34,085 INFO Sending Request Packet JP AccountNo = 1 Operation Type = Deposit Amount = 250 SequenceNo = 4
+2014-11-11 22:39:34,085 INFO Sending Update request to head
+2014-11-11 22:39:39,001 INFO Received Response  Request = JP.1.4 Account No = 1 Outcome = Processed New_Balance = 1000Server ('ubuntu', 35390)
+2014-11-11 22:39:39,039 INFO Setting New Tail for Client
+2014-11-11 22:39:39,039 INFO Finally Sent and Got response
+2014-11-11 22:39:39,069 INFO  Got info Extension info in client new tail ('ubuntu', 22259)

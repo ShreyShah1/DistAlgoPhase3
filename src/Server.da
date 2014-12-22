@@ -1,0 +1,421 @@
+import sys
+import os
+import logging
+import time
+from threading import Thread
+from time import sleep
+
+from datatypes import Request
+from datatypes import Reply
+
+#########                           SERVER CLASS                         ############
+
+class Server(process):
+    def setup(predeccesor,succesor,bank_name,master,server_number,lifetime,failureUponfailure,simulatepacketloss):
+         self.AllInfo    = dict()
+         self.logger     = None
+         self.Transaction_Processed = dict()
+         self.bank_name   = bank_name
+         self.sent        = dict()
+         self.NoOfMessagesSent = 0
+         self.flag             = 0
+
+
+    def main():
+
+        InitializeLogger(str(os.getpid()));
+        logger.info("Log File for Server for bank " + str(bank_name) + "With Id " + str(self.id) +" Lifetime "+str(lifetime) + " Failure " + str(failureUponfailure))
+        log_head_tail()
+
+
+        thread = Thread(target = threaded_function, args = (4, ))
+        thread.start()
+
+        await(self.NoOfMessagesSent == lifetime  or self.flag == 1)
+        logger.info(" ## Message limit might have reached till now  or flag = 1 ## "+ str(self.NoOfMessagesSent))
+        logger.info(" EXITING")
+
+
+    def threaded_function(arg):
+
+        while (1):
+          send(('HeartBeat',self.id,bank_name), to=master)
+          time.sleep(1)
+
+    def recv(msg=('Request',parameter,req), from_=client):
+
+
+      self.NoOfMessagesSent = self.NoOfMessagesSent + 1
+
+      if(simulatepacketloss == 0 ):                                  #### Specially for simulating the message loss
+
+        rep = process_request(req)                                   #### Processing the request
+
+        if(predeccesor == None):
+            parameter = client
+
+        clientToSend = parameter                                  #### This maintains the client to be sent
+
+        if(succesor == None):
+
+            if(req.operationType == 2):                               ### Query then send back to the tail
+                logger.info("Sending Reply for query operation")
+                send(('Response',rep), to=client)                         ### change
+
+            else:
+                logger.info("Sending Reply for update operation")
+                send(('Response',rep), to=parameter)
+                logger.info("Sending Acknowledgment from tail to predeccesor with object" + str(req))
+                send(('Acknowledgment',req), to=predeccesor)
+
+        else:
+
+            send(('Request',parameter,req), to=succesor)
+            self.sent[req.request_id] =   {'RequestObject':req ,'Client':clientToSend}                  ### Updatings the sent array
+
+      elif(simulatepacketloss == 1):
+          simulatepacketloss = 0                                                                      ### For simulating only
+
+
+    def recv(msg=('Acknowledgment',req)):
+
+        self.sent.pop(req.request_id)                                               ### Remove from the sent array
+
+        if(predeccesor == None):
+            logger.info(" Request removed from all sents " + str(req.request_id))
+        else:
+            send(('Acknowledgment',req), to=predeccesor)
+        logger.info(" Sent list after the deleting      " + str(self.sent))
+
+
+################################## FAILURE HANDLING ####################################################
+
+    def recv(msg=('Failure',server,str)):
+        if(str == "Head"):
+            logger.info(" ### This is the New Head  ### ")                              ## This means Head has failed
+            predeccesor = None
+
+        elif (str == "Tail"):
+            logger.info(" ### This is the New Tail ### ")                              ## This means Tail has failed
+            succesor = None
+            FixSentArrayForTail()
+
+
+        elif(str == "Successor"):                                              ## This means Middle has failed
+            succesor = server
+            logger.info("  ###  New predeccesor with succesor  ###")
+
+
+        elif(str == "Predeccesor"):                                            ## This means Middle has failed
+
+            predeccesor = server
+            logger.info(" ### New succesor with predeccesor ### ")
+            SendSentArrayToPredecceesor(server)
+
+
+        elif(str == "ThisIsNewTail"):
+            logger.info(" Got this is the new tail message")
+            predeccesor = server
+            send(('GiveMeYourState', ) ,to=server)
+        else:
+            logger.info(" ## got nothing ##")
+
+
+    def FixSentArrayForTail():
+        logger.info("  ######## Stabilizing the tail by clearing its sent array  ##########")
+        for key,value in self.sent.items():
+
+            req = value['RequestObject']
+            clientToSend = value['Client']
+
+            logger.info(" Sending response For key " + str(key))
+            reply = Transaction_Processed[key]['Reply']                      ### Get the reply from the processed transaction
+
+            send(('Response',reply), to=clientToSend)
+
+            send(('Acknowledgment',req), to=predeccesor)
+
+
+
+    def FixSentArray(key,sentarray):
+
+            req = sentarray['RequestObject']
+            clientToSend = sentarray['Client']
+
+            if key not in self.sent and key not in Transaction_Processed:
+
+                logger.info(" This key not there so adding "+str(key) )#+ " Not there succesor is  " + str(succesor))
+                FixProcessRequest(req,clientToSend)
+            else:
+                logger.info(" Ignoring this request since already there "+str(key))
+
+
+    def SendCorrectedSentArrayToSuccessor(sentarray,successor_server):
+        tempSentArray = dict()
+        for key,value in self.sent.items():
+
+            if key not in sentarray:
+
+                logger.info(" This key not there so adding  key= "+str(key) + " value = " + str(value))#+ " Not there succesor is  " + str(succesor))
+                tempSentArray[key] = value
+
+        logger.info("** Learnt which elements to send **")
+        if failureUponfailure == 0 :                                          ####  This bit if one then when dont send the array and exit ###
+               logger.info("Sending to successor "+ str(successor_server))
+               send(('CorrectedSentArray',tempSentArray), to=successor_server)
+        else:
+           self.flag = 1                                                            ###  Set Condition for Exit
+           logger.info(" Failure Flag one going out")
+
+
+    def UpdateSuccessorSentArray(tempsentArray):
+
+        for key,value in tempsentArray.items():
+
+            req = value['RequestObject']
+            clientToSend = value['Client']
+
+            if key not in Transaction_Processed:
+
+                  logger.info(" Not there in transaction Proccesed " + str(key))
+                  FixProcessRequest(req,clientToSend)
+
+            else:
+
+                  logger.info(" Was there in Trasaction Processed so sending Acknowlegment " + str(key))
+                  send(('Acknowledgment',req), to=predeccesor)
+
+
+    def FixProcessRequest(req,clientToSend):
+
+        rep = process_request(req)                                   #### Processing the request
+
+        if(succesor == None):
+
+                logger.info("Sending Reply for update operation")
+                send(('Response',rep), to=clientToSend)
+                logger.info("Sending Acknowledgment from tail to predeccesor with object" + str(req))
+                send(('Acknowledgment',req), to=predeccesor)
+        else:
+            send(('Request',clientToSend,req), to=succesor)
+            self.sent[req.request_id] =   {'RequestObject':req ,'Client':clientToSend}                  ### Updatings the sent array
+
+    def SendMiddleServerSentRequests():
+
+       for key,value in self.sent.items():
+          logger.info("### Sending ### key =  " + str(key))
+          send(('SentArray',key ,self.sent[key]), to=succesor)
+   #       time.sleep(1)
+
+
+    def SendSentArrayToPredecceesor(predeccesor_server):
+       logger.info("Sending to Predeccesor the Sent Array  " + str(predeccesor_server))
+       send(('SentArray' ,self.sent), to=predeccesor_server)
+
+
+    def recv(msg=('SentArray',sentarray) ,from_=server):
+         logger.info(" Got sent array of successor " + str(server))
+         logger.info(" #######################")
+         logger.info("Received array " + str(sentarray))
+         logger.info("Current Sent Array "+ str(self.sent))
+         logger.info(" #######################")
+         SendCorrectedSentArrayToSuccessor(sentarray,server)
+
+    def recv(msg=('CorrectedSentArray' , tempsentarray)):
+         logger.info(" Got Corrected Sent Array  " + str(tempsentarray))
+         logger.info("** Learnt from predeccesor what to proccess and what not to **")
+         if  failureUponfailure == 0 :                                                      #### Bit 1 then exit
+             UpdateSuccessorSentArray(tempsentarray)
+         else:
+             self.flag = 1                                                            ###  Set Condition for Exit
+             logger.info(" Failure Flag one going out")
+
+    def recv(msg=('YourPredeccesor' , predeccesor_server)):
+        logger.info(" In extending server got predeccesor_server = "+ str(predeccesor_server))
+        send(('GiveMeYourState', ) ,to=predeccesor_server)
+
+
+    def recv(msg=('GiveMeYourState',), from_=server):
+
+        logger.info(" Got Give me Your State from = "+str(server))
+
+        if(self.failureUponfailure == 0):
+          ForwardState(server)
+          succesor = server
+        else:
+          self.flag = 1
+          logger.info("failureUponfailure = 1 setting Flag = 1 and exiting ")
+
+
+#################################`# FAILURE HANDLING ####################################################
+
+################################## EXTENDING ###########################################################
+
+    def recv(msg=('Extend',key,newServer), from_=master):
+
+        logger.info("Got Extendng Making this as middle server")
+#        if (succesor == None):
+        succesor = newServer
+
+ #       else:
+ #           logger.info(" Some problem check it ")
+
+    def ForwardState(server):
+         logger.info(" ## Forwarding the state to = "+ str(server) + " ### ")
+         length = len(self.AllInfo)
+         logger.info(" Self.Info length = " + str(length))
+         j = 0
+         for accout_no in self.AllInfo:
+
+             account = self.AllInfo[accout_no]
+             logger.info(" Sending for account = " + str(accout_no) + " Value = "+ str(account))
+             Temporary_Transaction_Processed = dict()
+             for request_id in  self.Transaction_Processed:
+
+                 if accout_no == self.Transaction_Processed[request_id]['account_no']:
+                      Temporary_Transaction_Processed[request_id] = self.Transaction_Processed[request_id]
+
+             j = j + 1
+             send(('ForwardState',accout_no,account,Temporary_Transaction_Processed,j,length,self.sent), to=server)
+         logger.info("  ### State Forwarded ###  ")
+
+    def recv(msg=('ForwardState',account_no,account,Temporary_Transaction_Processed,j,length,previous_sent) , from_=server):
+
+        logger.info(" Got Previous Tails State for account_no " + str(account_no) )
+
+        logger.info(" Got Account " + str(account) + " Transaction Proccessed "+ str(Temporary_Transaction_Processed))
+
+        self.AllInfo[account_no] = account
+        for request_id in  Temporary_Transaction_Processed:
+           self.Transaction_Processed[request_id] = Temporary_Transaction_Processed[request_id]
+
+
+        if ( length == j ):
+            logger.info("############## This is the new tail  #############")
+            logger.info(" New Transaction_Proccessed " + str(self.Transaction_Processed))
+            logger.info(" New All Info " + str(self.AllInfo))
+            logger.info(" New Sent " + str(self.sent))
+            logger.info( "SETTING THE PREDECCESOR " + str(server))
+            predeccesor = server
+
+            if(self.failureUponfailure == 0):
+                ####            Send Acknowledgement Master                    ####
+                logger.info( "SENDING TO THE MASTER ")
+                send(('ExtensionComplete',bank_name) , to=master)
+            else:
+                logger.info(" Failure Upon Failue  = 1 and setting flag = 1 and exiting")         ### For Graceful Abortion
+                self.flag = 1
+
+
+
+################################## EXTENDING ###########################################################
+
+
+    def create_and_initialize_account(account_no , initial_balance , bank_name):
+
+        Account = {'balance':initial_balance ,'bank_name':bank_name}
+        AllInfo[account_no] = Account
+
+    def withdraw(account_no , balance):
+        account = AllInfo[account_no]
+
+        if(account['balance'] < balance ):
+            print("In sufficient balance for account_no = ",account_no)
+            return 0                                                               ###  Insufficient Balance
+        logger.info("Withdrawing for accountno = " + str(account_no) + " balance = " + str(balance))
+        account['balance'] = account['balance'] - balance
+        return 1
+
+    def deposit(account_no , amount):
+        logger.info("Depositing for accountno = " + str(account_no) + " balance = " + str(amount))
+        account = AllInfo[account_no]
+        account['balance'] = account['balance'] + amount
+        return account['balance']
+
+    def query(account_no):
+        logger.info("Querying for accountno = " + str(account_no) )
+        account = AllInfo[account_no]
+        return account['balance']
+
+    def get_balance(account_no):
+        account = AllInfo[account_no]
+        return account['balance']
+
+    def log_head_tail():
+
+        if (predeccesor == None and succesor == None ) :
+            logger.info("Extending Server")
+        elif(predeccesor == None):
+            logger.info("Head Server")
+        elif (succesor == None):
+            logger.info("Tail Server")
+
+        else:
+            logger.info("Middle Server")
+
+
+    def process_request(request):
+
+####     Check whether the account number is already there if not then add      #####
+
+        if(AllInfo.get(request.accountNo) == None):
+            logger.info("Account was not there.. So initializing ")
+            create_and_initialize_account(request.accountNo,0,request.bank_name)
+
+        logger.info("Current Request  "+request.request_id )
+
+        if request.request_id in Transaction_Processed:
+            if (request.accountNo == Transaction_Processed[request.request_id]['account_no']
+                   and request.operationType == Transaction_Processed[request.request_id]['operation_Type']
+                   and  request.amount == Transaction_Processed[request.request_id]['amount'])  :            #### Checking whether parameters are same or not
+
+                logger.info("Request Already there "+ str(request.request_id) +" So sending the previous reply ")
+                res = Transaction_Processed[request.request_id]['Reply']
+                return res
+            else:                                                                                             #### If not same that means its inconsistent with history
+                logger.info("Inconsistent with history "+ str(request.request_id))
+                return Reply(request.request_id,1, request.amount,request.accountNo)
+
+
+####   HANDLED DUPLICATE REQEUSTS HERE  INCONSISTENT WITH HISTORY  #####
+
+        if(request.operationType == 0):
+            ret = withdraw(request.accountNo ,request.amount)      ### Withdraw
+            new_balance = get_balance(request.accountNo)
+            if(ret == 1):
+                                                                 ### Storing in the History
+                res=Reply(request.request_id,0, new_balance,request.accountNo)
+                Transaction_Processed[request.request_id] = {'Reply':res ,'account_no':request.accountNo , 'operation_Type':request.operationType,'amount':request.amount}
+                return res
+            else:
+                logger.info("Insufficient Funds for request_Id "+ str(request.request_id))
+                res=Reply(request.request_id,2, new_balance,request.accountNo)                                          ### 2 Insufficient funds
+                return res
+
+        elif(request.operationType == 1):                        ###  Deposit
+
+            new_balance = deposit(request.accountNo,request.amount)
+                                                                                                     ### Storing in the History
+            res=Reply(request.request_id,0 , new_balance,request.accountNo)
+            Transaction_Processed[request.request_id] = {'Reply':res ,'account_no':request.accountNo , 'operation_Type':request.operationType,'amount':request.amount}
+            return res
+
+        elif(request.operationType == 2):                       ### Query
+            actual_balance = query(request.accountNo)
+            res=Reply(request.request_id,0 , actual_balance,request.accountNo)
+            return res
+
+        else:                                                   ### Neither of the requests
+            return None                                         ### Output Null should drop the packet
+
+    def InitializeLogger(Name):
+
+        logger = logging.getLogger(Name)
+        hdlr = logging.FileHandler(Name + '.log')
+        formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+        hdlr.setFormatter(formatter)
+        logger.addHandler(hdlr)
+        logger.setLevel(logging.INFO)
+
+#########                           SERVER CLASS                           ############
+

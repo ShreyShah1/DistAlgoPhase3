@@ -1,0 +1,21 @@
+2014-11-11 22:34:56,415 INFO Log File for Server for bank JPWith Id ('ubuntu', 28120) Lifetime 100 Failure 0
+2014-11-11 22:34:56,416 INFO Tail Server
+2014-11-11 22:34:56,474 INFO Account was not there.. So initializing 
+2014-11-11 22:34:56,477 INFO Current Request  JP.1.1
+2014-11-11 22:34:56,477 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:34:56,481 INFO Sending Reply for update operation
+2014-11-11 22:34:56,482 INFO Sending Acknowledgment from tail to predeccesor with object<datatypes.Request object at 0xb63d470c>
+2014-11-11 22:34:56,584 INFO Current Request  JP.1.2
+2014-11-11 22:34:56,589 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:34:56,589 INFO Sending Reply for update operation
+2014-11-11 22:34:56,590 INFO Sending Acknowledgment from tail to predeccesor with object<datatypes.Request object at 0xb63d45ec>
+2014-11-11 22:35:01,502 INFO  Got Give me Your State from = ('ubuntu', 32024)
+2014-11-11 22:35:01,506 INFO  Forwarding the state to = ('ubuntu', 32024)
+2014-11-11 22:35:01,524 INFO Got Extendng Making this as middle server
+2014-11-11 22:35:01,524 INFO  Some problem check it 
+2014-11-11 22:35:01,540 INFO Current Request  JP.1.3
+2014-11-11 22:35:01,545 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:35:01,558 INFO  Sent list after the deleting      {}
+2014-11-11 22:35:11,552 INFO Current Request  JP.1.4
+2014-11-11 22:35:11,552 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:35:11,570 INFO  Sent list after the deleting      {}

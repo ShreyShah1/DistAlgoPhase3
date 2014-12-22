@@ -1,0 +1,23 @@
+2014-11-11 22:39:23,941 INFO Log File for Master 
+2014-11-11 22:39:23,950 INFO  For key JP process Id ('ubuntu', 28234) Alive count 0
+2014-11-11 22:39:23,950 INFO  For key JP process Id ('ubuntu', 17645) Alive count 0
+2014-11-11 22:39:23,950 INFO  For key JP process Id ('ubuntu', 21906) Alive count 0
+2014-11-11 22:39:23,950 INFO  For key JP process Id ('ubuntu', 35390) Alive count 0
+2014-11-11 22:39:23,951 INFO  For key JP process Id ('ubuntu', 19807) Alive count 0
+2014-11-11 22:39:23,978 INFO  Extending for bank JP
+2014-11-11 22:39:23,989 INFO  Delay is 5
+2014-11-11 22:39:28,986 INFO Checking For Alive Count
+2014-11-11 22:39:28,995 INFO Here in extend
+2014-11-11 22:39:33,987 INFO Checking For Alive Count
+2014-11-11 22:39:38,991 INFO Checking For Alive Count
+2014-11-11 22:39:38,992 INFO   ## Found Dead ##: For key JP process Id ('ubuntu', 19807) Alive count 0
+2014-11-11 22:39:38,992 INFO Special case Tail Down for key JP
+2014-11-11 22:39:39,042 INFO  Sending this is the NewTail to server
+2014-11-11 22:39:39,046 INFO Previous List [<Server('ubuntu', 28234)>, <Server('ubuntu', 17645)>, <Server('ubuntu', 21906)>, <Server('ubuntu', 35390)>, <Server('ubuntu', 19807)>, <Server('ubuntu', 22259)>]
+2014-11-11 22:39:39,047 INFO New List [<Server('ubuntu', 28234)>, <Server('ubuntu', 17645)>, <Server('ubuntu', 21906)>, <Server('ubuntu', 35390)>, <Server('ubuntu', 22259)>]
+2014-11-11 22:39:39,060 INFO  Extention complete from server ('ubuntu', 22259)
+2014-11-11 22:39:39,066 INFO Sending for Extend 
+2014-11-11 22:39:39,068 INFO  Sending Extension notice to all Clients
+2014-11-11 22:39:39,069 INFO  EXTENTION COMPLETE 
+2014-11-11 22:39:44,050 INFO Checking For Alive Count
+2014-11-11 22:39:49,053 INFO Checking For Alive Count

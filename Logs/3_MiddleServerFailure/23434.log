@@ -1,0 +1,21 @@
+2014-11-11 22:14:33,990 INFO Log File for Server for bank JPWith Id ('ubuntu', 34971) Lifetime 100 Failure 0
+2014-11-11 22:14:33,995 INFO Middle Server
+2014-11-11 22:14:34,035 INFO Account was not there.. So initializing 
+2014-11-11 22:14:34,036 INFO Current Request  JP.1.1
+2014-11-11 22:14:34,037 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:14:34,054 INFO  Sent list after the deleting      {}
+2014-11-11 22:14:44,019 INFO  ### New succesor with predeccesor ### 
+2014-11-11 22:14:44,040 INFO Sending to Predeccesor the Sent Array  ('ubuntu', 23027)
+2014-11-11 22:14:44,188 INFO  Got Corrected Sent Array  {'JP.1.2': {'Client': <Client('ubuntu', 30652)>, 'RequestObject': <datatypes.Request object at 0xb6444d6c>}, 'JP.1.1': {'Client': <Client('ubuntu', 30652)>, 'RequestObject': <datatypes.Request object at 0xb6444e0c>}}
+2014-11-11 22:14:44,190 INFO ** Learnt from predeccesor what to proccess and what not to **
+2014-11-11 22:14:44,190 INFO  Not there in transaction Proccesed JP.1.2
+2014-11-11 22:14:44,190 INFO Current Request  JP.1.2
+2014-11-11 22:14:44,190 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:14:44,199 INFO  Was there in Trasaction Processed so sending Acknowlegment JP.1.1
+2014-11-11 22:14:44,204 INFO  Sent list after the deleting      {}
+2014-11-11 22:14:54,192 INFO Current Request  JP.1.3
+2014-11-11 22:14:54,193 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:14:54,235 INFO  Sent list after the deleting      {}
+2014-11-11 22:15:04,220 INFO Current Request  JP.1.4
+2014-11-11 22:15:04,220 INFO Depositing for accountno = 1 balance = 250
+2014-11-11 22:15:04,266 INFO  Sent list after the deleting      {}

@@ -1,0 +1,17 @@
+2014-11-11 22:43:09,134 INFO Log File for Master 
+2014-11-11 22:43:09,135 INFO  For key JP process Id ('ubuntu', 32164) Alive count 0
+2014-11-11 22:43:09,135 INFO  For key JP process Id ('ubuntu', 11324) Alive count 0
+2014-11-11 22:43:09,135 INFO  For key JP process Id ('ubuntu', 20013) Alive count 0
+2014-11-11 22:43:09,135 INFO  For key JP process Id ('ubuntu', 37287) Alive count 0
+2014-11-11 22:43:09,144 INFO  For key JP process Id ('ubuntu', 37049) Alive count 0
+2014-11-11 22:43:09,175 INFO  Extending for bank JP
+2014-11-11 22:43:09,178 INFO  Delay is 5
+2014-11-11 22:43:14,187 INFO Here in extend
+2014-11-11 22:43:14,215 INFO Checking For Alive Count
+2014-11-11 22:43:19,232 INFO Checking For Alive Count
+2014-11-11 22:43:24,235 INFO Checking For Alive Count
+2014-11-11 22:43:24,235 INFO   ## Found Dead ##: For key JP process Id ('ubuntu', 35006) Alive count 0
+2014-11-11 22:43:24,236 INFO Tail Down for key JP
+2014-11-11 22:43:24,293 INFO Previous List [<Server('ubuntu', 32164)>, <Server('ubuntu', 11324)>, <Server('ubuntu', 20013)>, <Server('ubuntu', 37287)>, <Server('ubuntu', 37049)>, <Server('ubuntu', 35006)>]
+2014-11-11 22:43:24,297 INFO New List [<Server('ubuntu', 32164)>, <Server('ubuntu', 11324)>, <Server('ubuntu', 20013)>, <Server('ubuntu', 37287)>, <Server('ubuntu', 37049)>]
+2014-11-11 22:43:29,299 INFO Checking For Alive Count

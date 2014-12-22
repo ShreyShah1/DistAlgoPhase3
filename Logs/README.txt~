@@ -1,0 +1,15 @@
+ INSTRUCTIONS TO COMPILE CODE
+
+Here , we have four files to compile one , do it in sequence , the main is in start.da so compile  and run this file as the last step:
+
+sudo python3 -m da datatypes.da
+
+sudo python3 -m da Client.da
+
+sudo python3 -m da Server.da
+
+sudo python3 -m da start.da "with one .xml file"
+
+For Example,
+
+sudo python3 -m da start.da 1_SpecifyAndCreateMultipleChains.xml

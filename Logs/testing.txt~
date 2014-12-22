@@ -1,0 +1,151 @@
+testing.txt: 
+---------------
+This file contains the detailed descriptions of the test scenarios that were developed to test our Chain Replication code. Each test case in this file is organized in the following manner, and are separated using horizontal dashed lines. The config files, log files and directory 
+
+--------------------------------------------------------------------------------------------
+[TEST-CASE number] : Number of the test case and its title
+[DESCRIPTION]: a brief description of the test case
+[DIRECTORY] : Directory which contains the files for the test case
+[CONFIG FILE]: the configuration file which should be given as input for running this test case
+[HOW TO] : How to run Chain Replication program to get this test case done
+--------------------------------------------------------------------------------------------
+
+We have listed in the below table the directory for all the test cases. Each directory contains the configuration file and the generated log files for that test case.
+----------------------------------------------------
+Test Case # |   Directory Name
+----------------------------------------------------
+1       |       1_SpecifyAndCreateMultipleChains
+2       |	2_SpecifyAndCreateMultipleClientPerChain
+3	|	3_ItemiziedRequest	
+4	|	6_HandleInsufficientFunds
+5	|	7_InconsistentWithHistory
+6	| 	8_DuplicateRequest
+7	|	9_RetransmitRequests
+----------------------------------------------------
+
+
+***************************************************************************************************
+START OF TEST CASES 
+***************************************************************************************************
+[TEST CASE 1]
+Start of server processes and generation of log files
+
+[DESCRIPTION]
+We give 2 different banks each having multiple chains 
+
+[DIRECTORY]
+1_SpecifyAndCreateMultipleChains
+
+[CONFIG FILE]
+1_SpecifyAndCreateMultipleChains.xml
+
+[HOW TO]
+sudo python3 -m da start.da SpecifyAndCreateMultipleChains.xml 
+
+---------------------------------------------------------------------------------------------------
+
+[TEST CASE 2]
+Start of client processes and generation of log files
+
+[DESCRIPTION]
+Here we create 3 clients for a bank
+
+[DIRECTORY]
+2_SpecifyAndCreateMultipleClientPerChain
+
+[CONFIG FILE]
+2_SpecifyAndCreateMultipleClientPerChain.xml
+
+[HOW TO]
+
+sudo python3 -m da start.da SpecifyAndCreateMultipleClientPerChain.xml
+
+
+---------------------------------------------------------------------------------------------------
+
+[TEST CASE 3]
+ItemiziedRequest_Deposit_Withdraw_query
+
+[DESCRIPTION]
+Here we take 3 requests showing successful deposit , withdraw and query
+
+[DIRECTORY]
+3_ItemiziedRequest_Deposit_Withdraw_query
+
+[CONFIG FILE]
+3_ItemiziedRequest_Deposit_Withdraw_query.xml
+
+[HOW TO]
+
+sudo python3 -m da start.da ItemiziedRequest_Deposit_Withdraw_query.xml
+---------------------------------------------------------------------------------------------------
+
+[TEST CASE 4]
+Handle Insufficient Funds
+
+[DESCRIPTION]
+We showing that withdrawing above the amount already present in the bank shows insufficent Funds 
+
+[DIRECTORY]
+6_HandleInsufficientFunds
+
+[CONFIG FILE]
+6_HandleInsufficientFunds.xml
+
+[HOW TO]
+sudo python3 -m da start.da HandleInsufficientFunds.xml
+
+---------------------------------------------------------------------------------------------------
+
+[TEST CASE 5]
+InconsistentWithHistory
+
+[DESCRIPTION]
+We show that if the request Id is already processed then if the parameters of a new request with same request_id (such as accountno,amount etc) differs then its InconsistentWithHistory 
+
+[DIRECTORY]
+7_InconsistentWithHistory
+
+[CONFIG FILE]
+sudo python3 -m da start.da InconsistentWithHistory.xml
+
+[HOW TO]
+
+7_InconsistentWithHistory
+---------------------------------------------------------------------------------------------------
+
+[TEST CASE 6]
+DuplicateRequest
+
+[DESCRIPTION]
+We show that if the request Id is already processed then if the parameters of a new request with same request_id (such as accountno,amount etc) remains same  then its Duplicate Request.
+
+[DIRECTORY]
+8_DuplicateRequest
+
+[CONFIG FILE]
+8_DuplicateRequest.xml
+
+[HOW TO]
+DuplicateRequest
+
+sudo python3 -m da start.da DuplicateRequest.xml
+---------------------------------------------------------------------------------------------------
+
+[TEST CASE 7]
+RetransmitRequests
+
+[DESCRIPTION]
+Here we give no server in the config file so no servers  will be up and so retransmit can be checked
+
+[DIRECTORY]
+9_RetransmitRequests
+
+[CONFIG FILE]
+9_RetransmitRequests.xml
+
+[HOW TO] 
+sudo python3 -m da start.da RetransmitRequests.xml
+ 
+
+

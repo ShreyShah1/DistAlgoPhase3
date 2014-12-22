@@ -1,0 +1,162 @@
+import sys
+import time
+import os
+import logging
+from threading import Thread
+
+from datatypes import Request
+from datatypes import Reply
+
+#########                              CLIENT CLASS                        ############
+
+class Client(process):
+    def setup(client_no,head_tail_details,client_access_list,requests,timeout,retry,sleepbetweenrequests):
+
+        self.sequence_no    = 0
+        print("Initializing Client ",client_no)
+        self.client_no      = client_no
+        self.client_server_details = dict()
+        self.client                = None
+        self.logger                = None
+        self.responses             = set()
+        set_server_details()
+
+    def set_server_details():
+
+        for key, value in client_access_list.items():
+
+            attributes_client = {'AccountNo':'','Head':'' , 'Tail': ''}
+            client_server_details[key] = attributes_client
+            if key in head_tail_details:
+                client_server_details[key]['Head'] = head_tail_details[key]['Head']     #### Check for has key !!
+                client_server_details[key]['Tail'] = head_tail_details[key]['Tail']
+            client_server_details[key]['AccountNo'] = value
+
+
+    def recv(msg=('Failure',key,Server,str)):
+        if (str == "Head"):
+            logger.info("Setting New Head for client ")
+            client_server_details[key]['Head'] = Server
+        elif (str == "Tail"):
+            logger.info("Setting New Tail for Client")
+            client_server_details[key]['Tail'] = Server
+
+
+
+    def recv(msg=('Extend',key,newServer) ):
+        logger.info(" Got info Extension info in client new tail "+ str(newServer))
+        client_server_details[key]['Tail'] = newServer
+
+
+    def outcome_mapping(outcome):
+        if(0 == outcome):
+            return 'Processed'
+        elif(1 == outcome):
+            return 'Inconsistent  with history'
+        elif(2 == outcome):
+            return 'Insufficient Funds'
+        else:
+            return 'Unknown Operation'
+
+    def MakeUniqueRequest(bank_name,account_no,sequence_no):
+        unique_Id =  bank_name +"." + str(client_no) + "." + str(sequence_no)
+        return unique_Id
+
+    def SendRequest(bank_name,operationType,account_no,amount,sequence_no):
+       request_id = MakeUniqueRequest(bank_name,account_no,sequence_no)
+
+       req = Request(amount, account_no ,operationType , request_id,bank_name)
+       SendPacket(bank_name,req)
+       return request_id
+
+    def SendPacket(bank_name,request):
+        if(request.operationType == 2):                                              #### Query
+
+            tail = client_server_details[bank_name]['Tail']                          ### Check for has key
+
+            logger.info("Sending query to the tail")
+            send(('Request',client,request), to=tail)
+
+        else :                                                                       ## Update
+
+            head = client_server_details[bank_name]['Head']
+
+            logger.info("Sending Update request to head")
+            send(('Request',client,request), to=head)
+
+    def InitializeLogger(Name):
+
+        logger = logging.getLogger(Name)
+        hdlr = logging.FileHandler(Name + '.log')
+        formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+        hdlr.setFormatter(formatter)
+        logger.addHandler(hdlr)
+        logger.setLevel(logging.INFO)
+
+    def operation_type(operation):
+        if(operation == 0):
+            return 'Withdraw'
+        elif(operation == 1):
+            return 'Deposit'
+        elif(operation == 2):
+            return 'Query'
+        else:
+            return 'Unknown Operation'
+
+    def threaded_function(arg):
+          request =requests[client_no]
+
+          for key,value in request.items():
+
+              no_of_retries  = retry
+
+              bank_name      = value['bank_name']
+              accountNo      = int(value['accountNo'])
+              operation_Type = int(value['operation_Type'])
+              amount         = int(value['amount'])
+              sequence_no    = int(value['sequence_no'])
+
+              logger.info("Sending Request Packet "+ bank_name + ' AccountNo = ' + str(accountNo) + ' Operation Type = ' + (operation_type(operation_Type)) + ' Amount = ' + str(amount) +' SequenceNo = ' + str(sequence_no))
+
+              request_id = SendRequest(bank_name,operation_Type,accountNo,amount,sequence_no)                             ###  SendRequest(operationType,account_no,amount):
+
+              while no_of_retries != 0 :
+
+      #          if await (request_id in responses):
+                if await (some(received(("Response",rep)), has = (rep.request_id == request_id))):
+                    logger.info("Finally Sent and Got response")
+                    logger.info("Received Response  Request = " + rep.request_id + " Account No = "+str(rep.account_no) +" Outcome = " + outcome_mapping(rep.outcome) + " New_Balance = " + str(rep.balance) )
+       #             responses.remove(request_id)
+                    no_of_retries = retry                                                                  ####  refilling the no_of retries
+                    time.sleep(sleepbetweenrequests)
+                    break
+
+                elif timeout(timeout):
+                    logger.warning("Timeout happened for " + str(request_id) + " so resending the request")
+                    no_of_retries -= 1
+                    request_id = SendRequest(bank_name,operation_Type,accountNo,amount,sequence_no)
+
+
+    def main():
+
+          InitializeLogger(str(os.getpid()));
+          logger.info("Log File for client no " +str(client_no))
+
+
+          threaded_function(5)
+          #--extend
+
+          await(some(received(('CLIENT_NEVER_TERMINATE',_))))
+
+
+
+
+
+
+
+
+
+
+
+
+#########                            CLIENT CLASS                        ############

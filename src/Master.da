@@ -1,0 +1,188 @@
+import sys
+import time
+import os
+import logging
+from Server import Server
+from threading import Thread
+
+
+#########                              MASTER CLASS                        ############
+
+class Master(process):
+    def setup(all_server_details,client_list):
+        self.all_server_details1 = all_server_details
+        self.logger = None
+        self.extend = 0
+
+
+
+    def recv(msg=('HeartBeat',id,key) , from_=server):
+
+        listofServers    = all_server_details1[key]['Servers']
+        listofAliveCount = all_server_details1[key]['Alive_Count']
+        for j in range(len(listofServers)):                                          #### Checking which server has sent the heart bea request
+            if (server == listofServers[j]):
+               listofAliveCount[j] += 1
+
+    def recv(msg=('ExtensionComplete',key) , from_=new_server):
+        logger.info( " Extention complete from server "+ str(new_server))
+
+        listofServers = all_server_details1[key]['Servers']
+
+        length = len(listofServers)
+
+        SendServerExtendNotice(key,new_server,listofServers[length-2])
+        SendAllClientExtendNotice(key,new_server)
+
+        logger.info(" EXTENTION COMPLETE ")
+
+    def Check_Alive_Servers():
+
+        for key,value in all_server_details1.items():
+            listofServers    = all_server_details1[key]['Servers']
+            listofAliveCount = all_server_details1[key]['Alive_Count']
+
+            for j in range(len(listofServers)):
+                if(listofAliveCount[j] > 0):
+                   # logger.info("Alive ")
+                    listofAliveCount[j] = 0                                                      ### Resetting  for the next round
+                else:
+                    logger.info("  ## Found Dead ##: For key " + str(key) + " process Id " + str(listofServers[j]) + " Alive count " + str(listofAliveCount[j]))
+                    FixChain(key,j)
+
+
+    def FixChain(key,j):
+
+      listofSevers = all_server_details1[key]['Servers']
+      listofAliveCount = all_server_details1[key]['Alive_Count']
+
+      if(self.extend == 0 or all_server_details1[key]['Extend_FailureUponFailue'] == 1) :
+
+        if(j == 0):                                                                                   # This means Head Gone
+            logger.info("Head Down for key "+ str(key))
+
+            SendServerFailure(listofSevers[j+1],None,"Head")
+            SendAllClientsFailureNotice(key,listofSevers[j+1],"Head")
+        elif(j == len(listofSevers) - 1):                                                            # This means Tail Gone
+            logger.info("Tail Down for key "+ str(key))
+
+            SendServerFailure(listofSevers[j-1],None,"Tail")
+            SendAllClientsFailureNotice(key,listofSevers[j-1],"Tail")
+        else:
+            logger.info("Middle Down for key "+ str(key))
+            SendServerFailure(listofSevers[j-1],listofSevers[j+1],"Middle")
+
+        logger.info("Previous List "+ str(listofSevers) )
+        listofSevers.remove(listofSevers[j])
+        logger.info("New List "+ str(listofSevers))
+
+      else:                                                                                         ### Siimulating specially  for Client
+         if (j == len(listofSevers) - 2 ):
+            logger.info("Special case Tail Down for key "+ str(key)  )
+
+            SendServerFailure(listofSevers[j-1],None,"Tail")
+            SendAllClientsFailureNotice(key,listofSevers[j-1],"Tail")
+
+            SendServerFailure(listofSevers[j+1],listofSevers[j-1],"ThisIsNewTail")                      ### SPECIAL MESSSAGE
+            self.extend = 0                                                                             ### Restting to normal state
+
+            logger.info("Previous List "+ str(listofSevers) )
+            listofSevers.remove(listofSevers[j])                                                        ### Fix for Alive Count Left TO DO
+       #     listofAliveCount.remove(listofAliveCount[j])
+            logger.info("New List "+ str(listofSevers))
+
+         else:
+             logger.info(" #### SOME PROBLEM ####")
+
+
+    def SendAllClientsFailureNotice(key,Server,str):
+        for j in range(len(client_list)):
+           send(('Failure',key,Server,str), to=client_list[j])
+
+    def SendServerFailure(server1,server2,str):
+        if(str == "Middle"):                                               ## For Middle Servers
+            send(('Failure',server1,"Predeccesor"), to=server2)
+            send(('Failure',server2,"Successor"), to=server1)
+
+        elif (str == "ThisIsNewTail"):
+
+            logger.info(" Sending this is the NewTail to server")# + str(server1))
+            send(('Failure',server2,str), to=server1)
+
+        else:                                                              ## For Head and Tail
+            send(('Failure',None,str), to=server1)
+
+    def ExtendTheChain(key):
+        logger.info("Here in extend")
+        listofServers = all_server_details1[key]['Servers']
+        listofAliveCount = all_server_details1[key]['Alive_Count']
+
+        length = len(listofServers)
+
+        new_server = new(Server , num = 1)
+        ps_server_list = list(new_server)
+
+        setup(new_server,[None,None,key,self.id,length,1011,all_server_details1[key]['Extend_FailureUponFailue'],0 ])
+        start(new_server)
+
+        self.extend = 1                                                                          ## Flag is setting
+
+        listofServers.append(ps_server_list[0])                                                  ## Appending the new Server
+        listofAliveCount.append(0)
+        send(('YourPredeccesor',listofServers[length-1]) ,to=new_server)
+
+    def SendServerExtendNotice(key,newServer,ServerToSend):
+         logger.info("Sending for Extend ")
+         send(('Extend',key,newServer), to=ServerToSend)
+
+    def SendAllClientExtendNotice(key,newServer):
+        logger.info(" Sending Extension notice to all Clients")
+        for j in range(len(client_list)):
+           send(('Extend',key,newServer), to=client_list[j])
+
+
+    def InitializeLogger(Name):
+        logger = logging.getLogger(Name)
+        hdlr = logging.FileHandler(Name + '.log')
+        formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+        hdlr.setFormatter(formatter)
+        logger.addHandler(hdlr)
+        logger.setLevel(logging.INFO)
+
+
+    def ExtendTheChainFunction(args):
+
+        for key,value in all_server_details1.items():
+            if all_server_details1[key]['Extend_Flag'] == 1 :
+                logger.info(" Extending for bank "+ str(key))
+                delay =  all_server_details1[key]['Extend_Delay']
+                logger.info(" Delay is "+ str(delay))
+                time.sleep(delay)
+                ExtendTheChain(key)
+
+    def main():
+
+          InitializeLogger(str(os.getpid()));
+          logger.info("Log File for Master " )
+
+          for key,value in all_server_details1.items():
+             for j in range(len(all_server_details1[key]['Servers'])):
+                  logger.info(" For key " + str(key) + " process Id " + str(value['Servers'][j]) + " Alive count " + str(value['Alive_Count'][j]))
+
+          thread = Thread(target = ExtendTheChainFunction, args = (4, ))
+          thread.start()
+
+          while True:
+             if (await(False)):
+                 logger.info("Inside Await")
+
+             elif timeout(5):
+               logger.info("Checking For Alive Count")
+               Check_Alive_Servers()
+
+
+          await(some(received(('MASTER_NEVER_TERMINATE',_))))
+
+
+
+#########                            MASTER CLASS                        ############

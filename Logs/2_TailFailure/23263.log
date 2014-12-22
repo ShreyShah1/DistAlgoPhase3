@@ -1,0 +1,13 @@
+2014-11-11 22:05:45,279 INFO Log File for Master 
+2014-11-11 22:05:45,279 INFO  For key JP process Id ('ubuntu', 29574) Alive count 0
+2014-11-11 22:05:45,280 INFO  For key JP process Id ('ubuntu', 15587) Alive count 0
+2014-11-11 22:05:45,280 INFO  For key JP process Id ('ubuntu', 26266) Alive count 0
+2014-11-11 22:05:45,280 INFO  For key JP process Id ('ubuntu', 29330) Alive count 0
+2014-11-11 22:05:50,311 INFO Checking For Alive Count
+2014-11-11 22:05:55,313 INFO Checking For Alive Count
+2014-11-11 22:05:55,314 INFO   ## Found Dead ##: For key JP process Id ('ubuntu', 29330) Alive count 0
+2014-11-11 22:05:55,314 INFO Tail Down for key JP
+2014-11-11 22:05:55,380 INFO Previous List [<Server('ubuntu', 29574)>, <Server('ubuntu', 15587)>, <Server('ubuntu', 26266)>, <Server('ubuntu', 29330)>]
+2014-11-11 22:05:55,386 INFO New List [<Server('ubuntu', 29574)>, <Server('ubuntu', 15587)>, <Server('ubuntu', 26266)>]
+2014-11-11 22:06:00,396 INFO Checking For Alive Count
+2014-11-11 22:06:05,415 INFO Checking For Alive Count

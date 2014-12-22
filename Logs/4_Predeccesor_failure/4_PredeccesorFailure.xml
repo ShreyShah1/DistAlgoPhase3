@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<data>
+    <bank name="JP">
+        <server_num>5</server_num>
+         <lifetime_message value = "100" FailureUponFailue = "0" />
+         <lifetime_message value = "100" FailureUponFailue = "1" />
+         <lifetime_message value = "1" FailureUponFailue = "0" />
+         <lifetime_message value = "100" FailureUponFailue = "0" />
+         <lifetime_message value = "100" FailureUponFailue = "0" />
+         <extend delay = "0" extend = "0"  FailureUponFailue="0"  />
+
+   </bank>
+
+
+
+<!--  Operations codes   Withdraw = 0  ,  Deposit = 1  Query = 2  -->
+    <client number="1">
+         <access_bank name="Morgan"   accountno="1"  />
+         <access_bank name="JP"   accountno="1"  />
+         <request_packet name="JP" sequence_no="1" operation_Type="1" accountno="1" amount="250" />
+         <request_packet name="JP" sequence_no="2" operation_Type="1" accountno="1" amount="250" />
+         <request_packet name="JP" sequence_no="3" operation_Type="1" accountno="1" amount="250" />
+         <request_packet name="JP" sequence_no="4" operation_Type="1" accountno="1" amount="250" />
+    </client>
+
+    <sleepbetweenrequests>0</sleepbetweenrequests>
+    <timeout>10</timeout>
+    <retry>10</retry>
+    <simulatepacketloss>0</simulatepacketloss>
+
+</data>

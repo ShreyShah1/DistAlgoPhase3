@@ -1,0 +1,17 @@
+2014-11-11 22:34:56,398 INFO Log File for Master 
+2014-11-11 22:34:56,399 INFO  For key JP process Id ('ubuntu', 36765) Alive count 0
+2014-11-11 22:34:56,399 INFO  For key JP process Id ('ubuntu', 29224) Alive count 0
+2014-11-11 22:34:56,399 INFO  For key JP process Id ('ubuntu', 10624) Alive count 0
+2014-11-11 22:34:56,399 INFO  For key JP process Id ('ubuntu', 13318) Alive count 0
+2014-11-11 22:34:56,400 INFO  For key JP process Id ('ubuntu', 28120) Alive count 0
+2014-11-11 22:34:56,423 INFO  Extending for bank JP
+2014-11-11 22:34:56,442 INFO  Delay is 5
+2014-11-11 22:35:01,423 INFO Checking For Alive Count
+2014-11-11 22:35:01,448 INFO Here in extend
+2014-11-11 22:35:01,522 INFO  Extention complete from server ('ubuntu', 32024)
+2014-11-11 22:35:01,523 INFO Sending for Extend 
+2014-11-11 22:35:01,525 INFO  Sending Extension notice to all Clients
+2014-11-11 22:35:01,546 INFO  EXTENTION COMPLETE 
+2014-11-11 22:35:06,426 INFO Checking For Alive Count
+2014-11-11 22:35:11,429 INFO Checking For Alive Count
+2014-11-11 22:35:16,431 INFO Checking For Alive Count
