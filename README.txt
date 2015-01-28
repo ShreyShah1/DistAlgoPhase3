@@ -14,21 +14,3 @@
 MAIN FILES :
     All the main files are in the src folder .
 
-LANGUAGE COMPARISION:
-	
-Coding in DistAlgo was relatively easy than Java manily because of the low level socket part handing of DistAlgo. Also , learning distAlgo was fast , we thought it would take time.
-
-The number of lines of code in Distalgo around 800 lines.
-While that in Java is around 3000 lines.
-
-It took 2-3 weeks to write the initial version of Java , debugging was difficult mainly because of the socket level communication.
-It took 2 weeks to write the initail version of distAlgo , debugging was not so difficult because of underlying python language extension.
-
-Readability of code is more in distAlgo , mainly because is compact and easy send and receive functions which make it more readable.s
-Readability of code is less in Java.
-
-Also due to socket communication Java was implemented little different  from the psedo code , while distAlgo was more or less the same	 
-	
-CONTRIBUTIONS:
-       
-       The distAlgo code was handled by Shrey Shah whereas the Java code was handled by Aadarsh Kenia although we disuccussed everything as when doubts came to us with each other. 
